@@ -1,0 +1,41 @@
+<!-- Method chaining can be a very
+useful technique to have in your bag of programming tools. -->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript Pattern - Chaining</title>
+  </head>
+  <script type="text/javascript">
+    // Chaining pattern enables you to call methods
+    // on an object one after the other
+
+    var obj = {
+      value: 1,
+      increment :function () {
+        this.value += 1;
+        return this;
+      },
+      add : function(v) {
+        this.value +=v;
+        return this;
+      },
+      shout : function() {
+        console.log(this.value);
+      }
+    };
+
+    //chain method call
+    obj.increment().add(5).shout();
+
+    //no chaining method
+
+    obj.increment();
+    obj.add(10);
+    obj.shout();
+  </script>
+  <body>
+
+  </body>
+</html>
