@@ -54,17 +54,62 @@
 
     }();
 
+    //Definition of superClass
+
+    function superClass() {
+
+    }
+
+    //Inheritence declaration
+    superClass.prototype = new topSuperClass();
+
+    //static menbers
+
+    superClass.staticProperty = function(){
+      //static private menbers
+      var SCstaticPrivateVariable = "I am static private variable of super class";
+      var SCstaticPrivateMethod = function () {
+        return "I am static private method of super class";
+      };
+
+      //public static menbers
+      return {
+        SCstaticPublicVariable : "I am static public variable of super class",
+        SCstaticPublicMethod: function () {
+          return "I am static public method of super class";
+        }
+      };
+    }();
+
+    //non static menbers
+    superClass.prototype.SCnonStaticProperty = function (){
+      //non static private menbers
+      var SCnonStaticPrivateVariable = "I am non static private variable of super class";
+      var SCnonStaticPrivateMethod = function (){
+        return "I am non static private method of super class";
+      };
+
+      //non static plublic menbers
+      return {
+        SCnonStaticPublicVariable : "I am non static public variable of super class",
+        SCnonStaticPublicMethod : function () {
+          return "I am non static public method of super class";
+        }
+      };
+    }();
+
+
     var test = function() {
 		//Demonstration of base class member access
 		var topSuperClassObj = new topSuperClass();// Creation of object of the base class
 		//Calling the private static members with class refferene
 		//alert(topSuperClass.staticProperty.TSCstaticPrivateVariable);//Not visible outside class
-		alert(topSuperClass.staticProperty.TSCstaticPrivateMethod());//Not visible outside class
+		//alert(topSuperClass.staticProperty.TSCstaticPrivateMethod());//Not visible outside class
 
 		//Accessing the public static members
 
 		//alert(topSuperClass.staticProperty.TSCstaticPublicVariable);//Visible as public member variable
-		//alert(topSuperClass.staticProperty.TSCstaticPublicMethod());//Visible as public method
+		alert(topSuperClass.staticProperty.TSCstaticPublicMethod());//Visible as public method
 
 		//Calling the private non static mebbers with object refferene
 		//alert(topSuperClassObj.TSCnonStaticProperty.TSCnonStaticPrivateVariable);//Not visible outside class
