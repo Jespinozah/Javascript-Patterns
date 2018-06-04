@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript Pattern - Callback</title>
+    <script type="text/javascript">
+      /* Title: Callback patterns
+       Description: when you pass function A to function B as a parameter, function A is a callback function
+       */
+
+       var complexComputation = function () {
+         /* Do something and return a node */
+       }
+
+       var findNodes = function (callback) {
+         var nodes = [];
+
+         node = complexComputation();
+
+         if (typeof callback === "function") {
+           callback(node);
+         }
+
+         nodes.push(node);
+         return nodes;
+       };
+
+       // a callback function
+       var hide = function (node) {
+         // node.style.display = "none";
+         console.log("hide " + node);
+       };
+
+       //find nodes and hide them as you go
+       var hiddenNodes = findNodes(hide);
+
+       // you can use an anonimus funtion, like this:
+
+       var blockNodes = findNodes(function (node){
+         // node.style.display = "block";
+         console.log("block " + node);
+       });
+
+
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>
